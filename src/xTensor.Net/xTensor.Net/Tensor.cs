@@ -3,7 +3,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
-namespace xTensor
+namespace XtlSharp
 {
     public partial class Tensor : IDisposable
     {
@@ -310,5 +310,7 @@ namespace xTensor
         {
             return new IntPtr(ptr.ToInt64() + offset);
         }
+
+
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace xTensor
+namespace XtlSharp
 {
     public class Shape
     {

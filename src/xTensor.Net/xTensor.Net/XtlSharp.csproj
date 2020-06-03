@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>xTensor</AssemblyName>
-    <RootNamespace>xTensor</RootNamespace>
+    <AssemblyName>XtlSharp</AssemblyName>
+    <RootNamespace>XtlSharp</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

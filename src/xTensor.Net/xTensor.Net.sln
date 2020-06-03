@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xTensor.Net", "xTensor.Net\xTensor.Net.csproj", "{B49EB542-C7E6-428C-B084-E929D83F838D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XtlSharp", "xTensor.Net\XtlSharp.csproj", "{B49EB542-C7E6-428C-B084-E929D83F838D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScratchPad", "..\..\examples\ScratchPad\ScratchPad.csproj", "{8EE898BB-9B96-4559-8AD2-2DF08445B138}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{B49EB542-C7E6-428C-B084-E929D83F838D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B49EB542-C7E6-428C-B084-E929D83F838D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B49EB542-C7E6-428C-B084-E929D83F838D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EE898BB-9B96-4559-8AD2-2DF08445B138}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EE898BB-9B96-4559-8AD2-2DF08445B138}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EE898BB-9B96-4559-8AD2-2DF08445B138}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EE898BB-9B96-4559-8AD2-2DF08445B138}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

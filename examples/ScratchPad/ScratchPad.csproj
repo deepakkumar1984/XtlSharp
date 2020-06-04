@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\xTensor.Net\xTensor.Net\XtlSharp.csproj" />
+    <ProjectReference Include="..\..\src\XtlSharp\XtlSharp.csproj" />
   </ItemGroup>
 
 </Project>

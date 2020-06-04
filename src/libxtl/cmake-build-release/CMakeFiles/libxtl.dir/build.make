@@ -44,10 +44,10 @@ RM = "C:\Program Files\JetBrains\CLion 2019.2\bin\cmake\win\bin\cmake.exe" -E re
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\git\xTensor.Net\src\libxtl
+CMAKE_SOURCE_DIR = C:\git\XtlSharp\src\libxtl
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\git\xTensor.Net\src\libxtl\cmake-build-release
+CMAKE_BINARY_DIR = C:\git\XtlSharp\src\libxtl\cmake-build-release
 
 # Include any dependencies generated for this target.
 include CMakeFiles\libxtl.dir\depend.make
@@ -60,78 +60,78 @@ include CMakeFiles\libxtl.dir\flags.make
 
 CMakeFiles\libxtl.dir\fillcopy.cpp.obj: CMakeFiles\libxtl.dir\flags.make
 CMakeFiles\libxtl.dir\fillcopy.cpp.obj: ..\fillcopy.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\git\xTensor.Net\src\libxtl\cmake-build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/libxtl.dir/fillcopy.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\git\XtlSharp\src\libxtl\cmake-build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/libxtl.dir/fillcopy.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1426~1.288\bin\Hostx64\x64\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\libxtl.dir\fillcopy.cpp.obj /FdCMakeFiles\libxtl.dir\ /FS -c C:\git\xTensor.Net\src\libxtl\fillcopy.cpp
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\libxtl.dir\fillcopy.cpp.obj /FdCMakeFiles\libxtl.dir\ /FS -c C:\git\XtlSharp\src\libxtl\fillcopy.cpp
 <<
 
 CMakeFiles\libxtl.dir\fillcopy.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/libxtl.dir/fillcopy.cpp.i"
 	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1426~1.288\bin\Hostx64\x64\cl.exe > CMakeFiles\libxtl.dir\fillcopy.cpp.i @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\git\xTensor.Net\src\libxtl\fillcopy.cpp
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\git\XtlSharp\src\libxtl\fillcopy.cpp
 <<
 
 CMakeFiles\libxtl.dir\fillcopy.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/libxtl.dir/fillcopy.cpp.s"
 	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1426~1.288\bin\Hostx64\x64\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\libxtl.dir\fillcopy.cpp.s /c C:\git\xTensor.Net\src\libxtl\fillcopy.cpp
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\libxtl.dir\fillcopy.cpp.s /c C:\git\XtlSharp\src\libxtl\fillcopy.cpp
 <<
 
 CMakeFiles\libxtl.dir\general.cpp.obj: CMakeFiles\libxtl.dir\flags.make
 CMakeFiles\libxtl.dir\general.cpp.obj: ..\general.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\git\xTensor.Net\src\libxtl\cmake-build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/libxtl.dir/general.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\git\XtlSharp\src\libxtl\cmake-build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/libxtl.dir/general.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1426~1.288\bin\Hostx64\x64\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\libxtl.dir\general.cpp.obj /FdCMakeFiles\libxtl.dir\ /FS -c C:\git\xTensor.Net\src\libxtl\general.cpp
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\libxtl.dir\general.cpp.obj /FdCMakeFiles\libxtl.dir\ /FS -c C:\git\XtlSharp\src\libxtl\general.cpp
 <<
 
 CMakeFiles\libxtl.dir\general.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/libxtl.dir/general.cpp.i"
 	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1426~1.288\bin\Hostx64\x64\cl.exe > CMakeFiles\libxtl.dir\general.cpp.i @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\git\xTensor.Net\src\libxtl\general.cpp
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\git\XtlSharp\src\libxtl\general.cpp
 <<
 
 CMakeFiles\libxtl.dir\general.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/libxtl.dir/general.cpp.s"
 	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1426~1.288\bin\Hostx64\x64\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\libxtl.dir\general.cpp.s /c C:\git\xTensor.Net\src\libxtl\general.cpp
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\libxtl.dir\general.cpp.s /c C:\git\XtlSharp\src\libxtl\general.cpp
 <<
 
-CMakeFiles\libxtl.dir\binary_func.cpp.obj: CMakeFiles\libxtl.dir\flags.make
-CMakeFiles\libxtl.dir\binary_func.cpp.obj: ..\binary_func.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\git\xTensor.Net\src\libxtl\cmake-build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/libxtl.dir/binary_func.cpp.obj"
+CMakeFiles\libxtl.dir\elementwise.cpp.obj: CMakeFiles\libxtl.dir\flags.make
+CMakeFiles\libxtl.dir\elementwise.cpp.obj: ..\elementwise.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\git\XtlSharp\src\libxtl\cmake-build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/libxtl.dir/elementwise.cpp.obj"
 	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1426~1.288\bin\Hostx64\x64\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\libxtl.dir\binary_func.cpp.obj /FdCMakeFiles\libxtl.dir\ /FS -c C:\git\xTensor.Net\src\libxtl\binary_func.cpp
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\libxtl.dir\elementwise.cpp.obj /FdCMakeFiles\libxtl.dir\ /FS -c C:\git\XtlSharp\src\libxtl\elementwise.cpp
 <<
 
-CMakeFiles\libxtl.dir\binary_func.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/libxtl.dir/binary_func.cpp.i"
-	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1426~1.288\bin\Hostx64\x64\cl.exe > CMakeFiles\libxtl.dir\binary_func.cpp.i @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\git\xTensor.Net\src\libxtl\binary_func.cpp
+CMakeFiles\libxtl.dir\elementwise.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/libxtl.dir/elementwise.cpp.i"
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1426~1.288\bin\Hostx64\x64\cl.exe > CMakeFiles\libxtl.dir\elementwise.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\git\XtlSharp\src\libxtl\elementwise.cpp
 <<
 
-CMakeFiles\libxtl.dir\binary_func.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/libxtl.dir/binary_func.cpp.s"
+CMakeFiles\libxtl.dir\elementwise.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/libxtl.dir/elementwise.cpp.s"
 	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1426~1.288\bin\Hostx64\x64\cl.exe @<<
- /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\libxtl.dir\binary_func.cpp.s /c C:\git\xTensor.Net\src\libxtl\binary_func.cpp
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\libxtl.dir\elementwise.cpp.s /c C:\git\XtlSharp\src\libxtl\elementwise.cpp
 <<
 
 # Object files for target libxtl
 libxtl_OBJECTS = \
 "CMakeFiles\libxtl.dir\fillcopy.cpp.obj" \
 "CMakeFiles\libxtl.dir\general.cpp.obj" \
-"CMakeFiles\libxtl.dir\binary_func.cpp.obj"
+"CMakeFiles\libxtl.dir\elementwise.cpp.obj"
 
 # External object files for target libxtl
 libxtl_EXTERNAL_OBJECTS =
 
 libxtl.dll: CMakeFiles\libxtl.dir\fillcopy.cpp.obj
 libxtl.dll: CMakeFiles\libxtl.dir\general.cpp.obj
-libxtl.dll: CMakeFiles\libxtl.dir\binary_func.cpp.obj
+libxtl.dll: CMakeFiles\libxtl.dir\elementwise.cpp.obj
 libxtl.dll: CMakeFiles\libxtl.dir\build.make
 libxtl.dll: CMakeFiles\libxtl.dir\objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\git\xTensor.Net\src\libxtl\cmake-build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX shared library libxtl.dll"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\git\XtlSharp\src\libxtl\cmake-build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX shared library libxtl.dll"
 	"C:\Program Files\JetBrains\CLion 2019.2\bin\cmake\win\bin\cmake.exe" -E vs_link_dll --intdir=CMakeFiles\libxtl.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x64\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100190~1.0\x64\mt.exe --manifests  -- C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1426~1.288\bin\Hostx64\x64\link.exe /nologo @CMakeFiles\libxtl.dir\objects1.rsp @<<
- /out:libxtl.dll /implib:libxtl.lib /pdb:C:\git\xTensor.Net\src\libxtl\cmake-build-release\libxtl.pdb /dll /version:0.0 /machine:x64 /INCREMENTAL:NO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib  
+ /out:libxtl.dll /implib:libxtl.lib /pdb:C:\git\XtlSharp\src\libxtl\cmake-build-release\libxtl.pdb /dll /version:0.0 /machine:x64 /INCREMENTAL:NO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib  
 <<
 
 # Rule to build all files generated by this target.
@@ -144,6 +144,6 @@ CMakeFiles\libxtl.dir\clean:
 .PHONY : CMakeFiles\libxtl.dir\clean
 
 CMakeFiles\libxtl.dir\depend:
-	$(CMAKE_COMMAND) -E cmake_depends "NMake Makefiles" C:\git\xTensor.Net\src\libxtl C:\git\xTensor.Net\src\libxtl C:\git\xTensor.Net\src\libxtl\cmake-build-release C:\git\xTensor.Net\src\libxtl\cmake-build-release C:\git\xTensor.Net\src\libxtl\cmake-build-release\CMakeFiles\libxtl.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "NMake Makefiles" C:\git\XtlSharp\src\libxtl C:\git\XtlSharp\src\libxtl C:\git\XtlSharp\src\libxtl\cmake-build-release C:\git\XtlSharp\src\libxtl\cmake-build-release C:\git\XtlSharp\src\libxtl\cmake-build-release\CMakeFiles\libxtl.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles\libxtl.dir\depend
 

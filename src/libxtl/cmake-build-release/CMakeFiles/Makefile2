@@ -45,10 +45,10 @@ RM = "C:\Program Files\JetBrains\CLion 2019.2\bin\cmake\win\bin\cmake.exe" -E re
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\git\xTensor.Net\src\libxtl
+CMAKE_SOURCE_DIR = C:\git\XtlSharp\src\libxtl
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\git\xTensor.Net\src\libxtl\cmake-build-release
+CMAKE_BINARY_DIR = C:\git\XtlSharp\src\libxtl\cmake-build-release
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -75,14 +75,14 @@ preinstall:
 CMakeFiles\libxtl.dir\all:
 	$(MAKE) -f CMakeFiles\libxtl.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\libxtl.dir\depend
 	$(MAKE) -f CMakeFiles\libxtl.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\libxtl.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\git\xTensor.Net\src\libxtl\cmake-build-release\CMakeFiles --progress-num=1,2,3,4 "Built target libxtl"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\git\XtlSharp\src\libxtl\cmake-build-release\CMakeFiles --progress-num=1,2,3,4 "Built target libxtl"
 .PHONY : CMakeFiles\libxtl.dir\all
 
 # Build rule for subdir invocation for target.
 CMakeFiles\libxtl.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\git\xTensor.Net\src\libxtl\cmake-build-release\CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\git\XtlSharp\src\libxtl\cmake-build-release\CMakeFiles 4
 	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\libxtl.dir\all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\git\xTensor.Net\src\libxtl\cmake-build-release\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\git\XtlSharp\src\libxtl\cmake-build-release\CMakeFiles 0
 .PHONY : CMakeFiles\libxtl.dir\rule
 
 # Convenience name for target.

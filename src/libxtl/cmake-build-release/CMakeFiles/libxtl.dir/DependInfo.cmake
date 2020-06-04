@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/git/xTensor.Net/src/libxtl/binary_func.cpp" "C:/git/xTensor.Net/src/libxtl/cmake-build-release/CMakeFiles/libxtl.dir/binary_func.cpp.obj"
-  "C:/git/xTensor.Net/src/libxtl/fillcopy.cpp" "C:/git/xTensor.Net/src/libxtl/cmake-build-release/CMakeFiles/libxtl.dir/fillcopy.cpp.obj"
-  "C:/git/xTensor.Net/src/libxtl/general.cpp" "C:/git/xTensor.Net/src/libxtl/cmake-build-release/CMakeFiles/libxtl.dir/general.cpp.obj"
+  "C:/git/XtlSharp/src/libxtl/elementwise.cpp" "C:/git/XtlSharp/src/libxtl/cmake-build-release/CMakeFiles/libxtl.dir/elementwise.cpp.obj"
+  "C:/git/XtlSharp/src/libxtl/fillcopy.cpp" "C:/git/XtlSharp/src/libxtl/cmake-build-release/CMakeFiles/libxtl.dir/fillcopy.cpp.obj"
+  "C:/git/XtlSharp/src/libxtl/general.cpp" "C:/git/XtlSharp/src/libxtl/cmake-build-release/CMakeFiles/libxtl.dir/general.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "MSVC")
 

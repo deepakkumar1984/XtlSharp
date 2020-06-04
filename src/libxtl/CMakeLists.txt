@@ -3,4 +3,5 @@ project(libxtl)
 
 set(CMAKE_CXX_STANDARD 17)
 include_directories(.)
-add_library(libxtl SHARED general.h TensorRef.h fillcopy.h fillcopy.cpp general.cpp binary_func.h binary_func.cpp)
+add_compile_options(-bigobj)
+add_library(libxtl SHARED general.h TensorRef.h fillcopy.h fillcopy.cpp general.cpp elementwise.h elementwise.cpp)

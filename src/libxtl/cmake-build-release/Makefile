@@ -49,10 +49,10 @@ RM = "C:\Program Files\JetBrains\CLion 2019.2\bin\cmake\win\bin\cmake.exe" -E re
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\git\xTensor.Net\src\libxtl
+CMAKE_SOURCE_DIR = C:\git\XtlSharp\src\libxtl
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\git\xTensor.Net\src\libxtl\cmake-build-release
+CMAKE_BINARY_DIR = C:\git\XtlSharp\src\libxtl\cmake-build-release
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -81,9 +81,9 @@ rebuild_cache\fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\git\xTensor.Net\src\libxtl\cmake-build-release\CMakeFiles C:\git\xTensor.Net\src\libxtl\cmake-build-release\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\git\XtlSharp\src\libxtl\cmake-build-release\CMakeFiles C:\git\XtlSharp\src\libxtl\cmake-build-release\CMakeFiles\progress.marks
 	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\git\xTensor.Net\src\libxtl\cmake-build-release\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\git\XtlSharp\src\libxtl\cmake-build-release\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -124,32 +124,32 @@ libxtl\fast:
 	$(MAKE) -f CMakeFiles\libxtl.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\libxtl.dir\build
 .PHONY : libxtl\fast
 
-binary_func.obj: binary_func.cpp.obj
+elementwise.obj: elementwise.cpp.obj
 
-.PHONY : binary_func.obj
+.PHONY : elementwise.obj
 
 # target to build an object file
-binary_func.cpp.obj:
-	$(MAKE) -f CMakeFiles\libxtl.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\libxtl.dir\binary_func.cpp.obj
-.PHONY : binary_func.cpp.obj
+elementwise.cpp.obj:
+	$(MAKE) -f CMakeFiles\libxtl.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\libxtl.dir\elementwise.cpp.obj
+.PHONY : elementwise.cpp.obj
 
-binary_func.i: binary_func.cpp.i
+elementwise.i: elementwise.cpp.i
 
-.PHONY : binary_func.i
+.PHONY : elementwise.i
 
 # target to preprocess a source file
-binary_func.cpp.i:
-	$(MAKE) -f CMakeFiles\libxtl.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\libxtl.dir\binary_func.cpp.i
-.PHONY : binary_func.cpp.i
+elementwise.cpp.i:
+	$(MAKE) -f CMakeFiles\libxtl.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\libxtl.dir\elementwise.cpp.i
+.PHONY : elementwise.cpp.i
 
-binary_func.s: binary_func.cpp.s
+elementwise.s: elementwise.cpp.s
 
-.PHONY : binary_func.s
+.PHONY : elementwise.s
 
 # target to generate assembly for a file
-binary_func.cpp.s:
-	$(MAKE) -f CMakeFiles\libxtl.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\libxtl.dir\binary_func.cpp.s
-.PHONY : binary_func.cpp.s
+elementwise.cpp.s:
+	$(MAKE) -f CMakeFiles\libxtl.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\libxtl.dir\elementwise.cpp.s
+.PHONY : elementwise.cpp.s
 
 fillcopy.obj: fillcopy.cpp.obj
 
@@ -214,9 +214,9 @@ help:
 	@echo ... libxtl
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... binary_func.obj
-	@echo ... binary_func.i
-	@echo ... binary_func.s
+	@echo ... elementwise.obj
+	@echo ... elementwise.i
+	@echo ... elementwise.s
 	@echo ... fillcopy.obj
 	@echo ... fillcopy.i
 	@echo ... fillcopy.s

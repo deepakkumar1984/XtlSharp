@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/libxtl.dir/binary_func.cpp.obj"
+  "CMakeFiles/libxtl.dir/elementwise.cpp.obj"
   "CMakeFiles/libxtl.dir/fillcopy.cpp.obj"
   "CMakeFiles/libxtl.dir/general.cpp.obj"
   "libxtl.dll"

@@ -1,0 +1,85 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace XtlSharp.Native
+{
+    public enum ElementwiseFunc
+    {
+        //Binary func
+        Add = 0,
+        Sub,
+        Mul,
+        Div,
+        Eq,
+        NotEq,
+        Greater,
+        GreaterEqual,
+        Less,
+        LessEqual,
+        LogicalAnd,
+        LogicalOr,
+        BitwiseAnd,
+        BitwiseOr,
+        BitwiseXor,
+        BitwiseLeftShift,
+        BitwiseRightShift,
+        FMod,
+        Remainder,
+        Maximum,
+        Minimum,
+        FDim,
+        Hypot,
+        ATan2,
+
+        //Ternary func
+        Where,
+        ArgWhere,
+        Fma,
+
+        //Urinary func
+        LogicalNot,
+        BitwiseNot,
+        Any,
+        All,
+        Abs,
+        FAbs,
+        Sign,
+        Exp,
+        Exp2,
+        Expm1,
+        Log,
+        Log2,
+        Log10,
+        Log1p,
+        Sqrt,
+        Cbrt,
+        Sin,
+        Cos,
+        Tan,
+        ASin,
+        ACos,
+        ATan,
+        Sinh,
+        Cosh,
+        Tanh,
+        ASinh,
+        ACosh,
+        ATanh,
+        Erf,
+        Erfc,
+        TGamma,
+        LGamma,
+        Ceil,
+        Floor,
+        Trunc,
+        Round,
+        NearByInt,
+        RInt,
+        IsFinite,
+        IsInf,
+        IsNan,
+        NonZero,
+        FlatNonZero
+    };
+}

@@ -1,7 +1,7 @@
 //
 // Created by deepak on 31/05/2020.
 //
-#include "binary_func.h"
+#include "elementwise.h"
 
 template<typename T>
 void BinaryOp(T& a, T& b, T& r, BinaryOpCode op)

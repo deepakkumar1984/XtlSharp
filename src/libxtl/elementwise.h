@@ -86,8 +86,3 @@ OPS_API int TS_Elementwise_3(TensorRef* a, TensorRef* b, TensorRef* c, TensorRef
 OPS_API int TS_Elementwise_1(TensorRef* a, TensorRef* r, int op);
 OPS_API int TS_Elementwise_1_Cls(TensorRef* a, TensorRef* r, int op);
 OPS_API int TS_Elementwise_2_Bitwise(TensorRef* a, TensorRef* b, TensorRef* r, int op);
-OPS_API int TS_Cast(TensorRef* x, int type, TensorRef* r);
-OPS_API int TS_Clip(TensorRef* x, double min, double max, TensorRef* r);
-OPS_API int TS_Pow(TensorRef* x, double value, TensorRef* r);
-OPS_API int TS_IsClose(TensorRef* a, TensorRef* b, double rtol, double atol, bool equal_nan, TensorRef* r);
-OPS_API int TS_AllClose(TensorRef* a, TensorRef* b, double rtol, double atol, bool equal_nan, TensorRef* r);

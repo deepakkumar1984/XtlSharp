@@ -82,4 +82,33 @@ namespace XtlSharp.Native
         NonZero,
         FlatNonZero
     };
+
+    public enum ReduceFunc
+    {
+        Sum = 0,
+        Prod,
+        Mean,
+        Variance,
+        StdDev,
+        Diff,
+        Amax,
+        Amin,
+        Trapz,
+        NormL0,
+        NormL1,
+        NormSq,
+        NormL2,
+        NormLinf,
+        NormLp2P,
+        NormLp,
+        NormInducedL1,
+        NormInducedLinf,
+        CumSum,
+        CumProd,
+        Nan2Num,
+        NanSum,
+        NanProd,
+        NanCumSum,
+        NanCumProd
+    };
 }

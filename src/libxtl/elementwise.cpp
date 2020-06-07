@@ -105,8 +105,8 @@ void ElementwiseOp(T& a, T& r, ElementwiseFunc op)
         case ElementwiseFunc::Round : r = xt::round(a); break;
         case ElementwiseFunc::NearByInt : r = xt::nearbyint(a); break;
         case ElementwiseFunc::RInt : r = xt::rint(a); break;
-        case ElementwiseFunc::Where : r = xt::where(a); break;
-        case ElementwiseFunc::ArgWhere : r = xt::argwhere(a); break;
+        //case ElementwiseFunc::Where : r = xt::where(a); break;
+        //case ElementwiseFunc::ArgWhere : r = xt::argwhere(a); break;
         default:
             throw TSError("Unsupported Op");
             break;

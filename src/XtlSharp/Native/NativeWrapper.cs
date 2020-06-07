@@ -44,5 +44,14 @@ namespace XtlSharp.Native
 
         [DllImport(dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern int TS_AllClose(IntPtr a, IntPtr b, double rtol, double atol, IntPtr r);
+
+        [DllImport(dll, CallingConvention = CallingConvention.Cdecl)]
+        public static unsafe extern int TS_Reduce(IntPtr x, int* axes, int n, IntPtr r, double p1, int p2, int p3, int op);
+
+        [DllImport(dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int TS_ReduceAll(IntPtr x, IntPtr r, int op, double p1, int p2);
+
+        [DllImport(dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int TS_Accumulating(IntPtr x, int axis, IntPtr r, int op);
     }
 }

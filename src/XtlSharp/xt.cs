@@ -74,7 +74,7 @@ namespace XtlSharp
 
         public static XArray Cast(XArray x, DType dtype)
         {
-            throw new NotImplementedException();
+            return NativeHelper.Cast(x, dtype);
         }
 
         public static XArray BitwiseAnd(XArray lhs, XArray rhs)

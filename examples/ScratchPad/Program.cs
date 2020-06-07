@@ -7,13 +7,9 @@ namespace ScratchPad
     {
         static void Main(string[] args)
         {
-            XArray x = new XArray(new Shape(2, 3), DType.Float32);
-            XArray y = new XArray(new Shape(2, 3), DType.Float32);
-
-            x.Fill(2);
-            y.Fill(3);
-            var z = xt.Less(x, y);
-            var data_z = z.ToArray();
+            XArray x = new XArray(new float[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }).Reshape(3, 3);
+            var y = x[":", 1];
+            var d = y.ToArray();
         }
     }
 }

@@ -220,12 +220,24 @@ namespace XtlSharp
             }
         }
 
+        public XArray this[params object[] items]
+        {
+            get
+            {
+                return this;
+            }
+            set
+            {
+                this = value;
+            }
+        }
+
         internal static XArray FromRef(XArrayRef tensorRef)
         {
             long[] shape_data = new long[tensorRef.dimCount];
             Marshal.Copy(tensorRef.sizes, shape_data, 0, shape_data.Length);
             Shape shape = new Shape(shape_data);
-            XArray result = new XArray(shape, (DType)tensorRef.elementType);
+            XArray result = new XArray(shape, tensorRef.elementType);
             result.NativePtr = tensorRef.buffer;
 
             return result;

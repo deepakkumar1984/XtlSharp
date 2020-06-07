@@ -23,7 +23,7 @@ namespace XtlSharp
 
         public static XArray FDim(XArray a, XArray b) => NativeHelper.ElementwiseOps(a, b, ElementwiseFunc.FDim);
 
-        public static XArray Clip(XArray x, double min, double max) => throw new NotImplementedException();
+        public static XArray Clip(XArray x, double min, double max) => NativeHelper.Clip(x, min, max);
 
         public static XArray Sign(XArray x) => throw new NotImplementedException();
     }

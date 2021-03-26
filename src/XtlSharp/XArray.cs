@@ -226,10 +226,10 @@ namespace XtlSharp
             {
                 return this;
             }
-            set
-            {
-                this = value;
-            }
+            //set
+            //{
+            //    this = value;
+            //}
         }
 
         internal static XArray FromRef(XArrayRef tensorRef)

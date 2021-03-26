@@ -53,5 +53,17 @@ namespace XtlSharp.Native
 
         [DllImport(dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern int TS_Accumulating(IntPtr x, int axis, IntPtr r, int op);
+
+        [DllImport(dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int TS_RandomSeed(int seed);
+
+        [DllImport(dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int TS_Random_Rand(IntPtr r, double lower, double upper);
+
+        [DllImport(dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int TS_Random_RandInt(IntPtr r, double lower, double upper);
+
+        [DllImport(dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int TS_Initializer(IntPtr r, double lower, double upper);
     }
 }

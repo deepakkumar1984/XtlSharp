@@ -1,0 +1,232 @@
+Containers
+Done - np.array([[3, 4], [5, 6]])
+Done - arr.reshape([3, 4])
+Done - arr.astype(np.float64)
+
+Initializers
+np.linspace(1.0, 10.0, 100)
+np.logspace(2.0, 3.0, 4)
+np.arange(3, 7)
+np.eye(4)
+np.zeros([3, 4])
+np.ones([3, 4])
+np.empty([3, 4])
+np.meshgrid(x0, x1, x2, indexing='ij')
+
+Slicing and indexing
+a[3, 2]
+a.flat[4]
+a[3]
+a[:, 2]
+a[:5, 1:]
+a[5:1:-1, :]
+a[..., 3]
+a[:, np.newaxis]
+
+Broadcasting
+np.broadcast(a, [4, 5, 7])
+np.vectorize(f)
+a[a > 5]
+a[[0, 1], [0, 0]]
+
+Random
+Done - np.random.seed(0)
+np.random.randn(10, 10)
+np.random.randint(10, 10)
+Done - np.random.rand(3, 4)
+np.random.choice(arr, 5)
+np.random.shuffle(arr)
+np.random.permutation(30)
+
+Concatenation, splitting, squeezing
+np.stack([a, b, c], axis=1)
+np.hstack([a, b, c])
+np.vstack([a, b, c])
+np.concatenate([a, b, c], axis=1)
+np.tile(a, reps)
+np.squeeze(a)
+np.expand_dims(a, 1)
+np.atleast_3d(a)
+np.split(a, 4, axis=0)
+np.hsplit(a, 4)
+np.vsplit(a, 4)
+np.trim_zeros(a, trim='fb')
+np.pad(a, pad_width, mode='constant', constant_values=0)
+
+Rearrange elements
+np.diag(a)
+np.diagonal(a)
+np.triu(a)
+np.tril(a, k=1)
+np.flip(a, axis=3)
+np.flipud(a)
+np.fliplr(a)
+np.transpose(a, (1, 0, 2))
+np.ravel(a, order='F')
+np.rot90(a)
+np.rot90(a, 2, (1, 2))
+np.roll(a, 2, axis=1)
+
+Iteration
+for x in np.nditer(a):
+
+Logical
+Done - np.where(a > 5, a, b)
+Done - np.where(a > 5)
+np.argwhere(a > 5)
+Done - np.any(a)
+Done - np.all(a)
+np.isin(a, b)
+np.in1d(a, b)
+Done - np.logical_and(a, b)
+Done - np.logical_or(a, b)
+Done - np.isclose(a, b)
+Done - np.allclose(a, b)
+a = ~b
+
+Indices
+np.ravel_multi_index(indices, a.shape)
+
+Comparisons
+Done - np.equal(a, b)
+Done - np.not_equal(a, b)
+Done - np.less(a, b)
+Done - np.less_equal(a, b)
+Done - np.greater(a, b)
+Done - np.greater_equal(a, b)
+np.nonzero(a)
+np.flatnonzero(a)
+
+Minimum, Maximum, Sorting
+Done - np.amin(a)
+Done - np.amax(a)
+np.argmin(a)
+np.argmax(a, axis=1)
+np.sort(a, axis=1)
+np.argsort(a, axis=1)
+np.unique(a)
+np.setdiff1d(ar1, ar2)
+np.diff(a[, n, axis])
+np.partition(a, kth)
+np.argpartition(a, kth)
+np.median(a, axis)
+
+Complex numbers
+np.real(a)
+np.imag(a)
+np.conj(a)
+
+Reducers
+Done - np.sum(a, axis=[0, 1])
+Done - np.sum(a, axis=1)
+Done - np.sum(a)
+Done - np.prod(a, axis=[0, 1])
+Done - np.prod(a, axis=1)
+Done - np.prod(a)
+Done - np.mean(a, axis=[0, 1])
+np.meanDone - (a, axis=1)
+Done - np.mean(a)
+Done - np.std(a, [axis])
+Done - np.var(a, [axis])
+Done - np.trapz(a, dx=2.0, axis=-1)
+Done - np.trapz(a, x=b, axis=-1)
+np.count_nonzero(a, axis=[0, 1])
+np.count_nonzero(a, axis=1)
+np.count_nonzero(a)
+
+Print options
+np.set_printoptions(precision=4)
+np.set_printoptions(threshold=5)
+np.set_printoptions(edgeitems=3)
+np.set_printoptions(linewidth=100)
+
+Reading npy, csv file formats
+np.load(filename)
+np.save(filename, arr)
+np.load_txt(filename, delimiter=',')
+
+Basic functions:
+Done - np.absolute(a)
+np.sign(a)
+Done - np.remainder(a, b)
+Done - np.minimum(a, b)
+Done - np.maximum(a, b)
+Done - np.clip(a, min, max)
+np.interp(x, xp, fp, [,left, right])
+np.rad2deg(a)
+np.degrees(a)
+np.deg2rad(a)
+np.radians(a)
+
+Exponential functions:
+Done - np.exp(a)
+Done - np.expm1(a)
+Done - np.log(a)
+Done - np.log1p(a)
+
+Power functions:
+Done - np.power(a, p)
+Done - np.sqrt(a)
+Done - np.square(a)
+Done - np.cbrt(a)
+
+Trigonometric functions:
+Done - np.sin(a)
+Done - np.cos(a)
+Done - np.tan(a)
+
+Hyperbolic functions:
+Done - np.sinh(a)
+Done - np.cosh(a)
+Done - np.tanh(a)
+
+Error and gamma functions:
+scipy.special.erf(a)
+scipy.special.gamma(a)
+scipy.special.gammaln(a)
+
+Classification functions:
+Done - np.isnan(a)
+Done - np.isinf(a)
+Done - np.isfinite(a)
+np.searchsorted(a, v[, side])
+
+Histogram:
+np.histogram(a, bins[, weights][, density])
+np.histogram_bin_edges(a, bins[, weights][, left, right][, bins][, mode])
+np.bincount(arr)
+np.digitize(data, bin_edges[, right])
+
+Linear algebra
+np.dot(a, b)
+np.vdot(a, b)
+np.outer(a, b)
+np.matrix_power(a, 123)
+np.kron(a, b)
+np.tensordot(a, b, axes=3)
+np.tensordot(a, b, axes=((0,2),(1,3))
+
+Decompositions
+np.linalg.cholesky(a)
+np.linalg.qr(a)
+np.linalg.svd(a)
+
+Matrix eigenvalues
+np.linalg.eig(a)
+np.linalg.eigvals(a)
+np.linalg.eigh(a)
+np.linalg.eigvalsh(a)
+
+Norms and other numbers
+np.linalg.norm(a, order=2)
+np.linalg.cond(a)
+np.linalg.det(a)
+np.linalg.matrix_rank(a)
+np.linalg.slogdet(a)
+np.trace(a)
+
+Solving equations and inverting matrices
+np.linalg.inv(a)
+np.linalg.pinv(a)
+np.linalg.solve(A, b)
+np.linalg.lstsq(A, b)

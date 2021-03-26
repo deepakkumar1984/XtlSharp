@@ -1,5 +1,6 @@
 ﻿using System;
 using XtlSharp;
+using Random = XtlSharp.Random;
 
 namespace ScratchPad
 {
@@ -7,9 +8,8 @@ namespace ScratchPad
     {
         static void Main(string[] args)
         {
-            XArray x = new XArray(new float[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }).Reshape(3, 3);
-            var y = x[":", 1];
-            var d = y.ToArray();
+            var r = Random.Rand(new Shape(3, 3), 0, 1);
+            var d = r.ToArray();
         }
     }
 }

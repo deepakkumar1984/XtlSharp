@@ -120,5 +120,17 @@ namespace XtlSharp.Native
             NativeWrapper.TS_Accumulating(x.GetRef(), axis, r.GetRef(), (int)op);
             return r;
         }
+
+        public static void RandomSeed(int seed)
+        {
+            NativeWrapper.TS_RandomSeed(seed);
+        }
+
+        public static XArray RandomRand(Shape shape, double low, double high, DType dtype = DType.Float32)
+        {
+            XArray r = new XArray(shape, dtype);
+            NativeWrapper.TS_Random_Rand(r.GetRef(), low, high);
+            return r;
+        }
     }
 }

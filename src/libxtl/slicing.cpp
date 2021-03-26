@@ -2,5 +2,5 @@
 
 int TS_Slice(TensorRef* x, TensorRef* r, char* notation)
 {
-    
+    return 0;
 }

@@ -148,6 +148,13 @@ int TS_Elementwise_2(TensorRef* a, TensorRef* b, TensorRef* r, int op)
                 ElementwiseOp(a_t, b_t, r_t, static_cast<ElementwiseFunc>(op));
                 break;
             }
+            case DType::Float128: {
+                auto a_t = xt::adapt((long double *) a->buffer, a->ElementCount(), xt::no_ownership(), a->getShape());
+                auto b_t = xt::adapt((long double *) b->buffer, b->ElementCount(), xt::no_ownership(), b->getShape());
+                auto r_t = xt::adapt((long double *) r->buffer, r->ElementCount(), xt::no_ownership(), r->getShape());
+                ElementwiseOp(a_t, b_t, r_t, static_cast<ElementwiseFunc>(op));
+                break;
+            }
             case DType::Int8: {
                 auto a_t = xt::adapt((int8_t *) a->buffer, a->ElementCount(), xt::no_ownership(), a->getShape());
                 auto b_t = xt::adapt((int8_t *) b->buffer, b->ElementCount(), xt::no_ownership(), b->getShape());

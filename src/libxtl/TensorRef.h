@@ -4,6 +4,7 @@ enum DType
 {
     Float32 = 0,
     Float64,
+    Float128,
     Int8,
     Int16,
     Int32,

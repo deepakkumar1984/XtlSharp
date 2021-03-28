@@ -6,6 +6,7 @@
 #include "xtensor/xadapt.hpp"
 #include "xtensor/xexpression.hpp"
 #include "TensorRef.h"
+
 #define uint8 unsigned __int8
 
 #ifdef _WIN32
@@ -69,7 +70,8 @@ xt::xarray<T> Ref2Array(TensorRef* x)
 	switch (ELEMENTTYPE)\
 	{\
 	case DType::Float32: FUNCTION<float>(__VA_ARGS__); break;\
-	case DType::Float64: FUNCTION<double>(__VA_ARGS__); break;\
+	case DType::Float64: FUNCTION<double>(__VA_ARGS__); break;   \
+    case DType::Float128: FUNCTION<long double>(__VA_ARGS__); break;\
 	case DType::Int32: FUNCTION<__int32>(__VA_ARGS__); break;    \
     case DType::UInt32: FUNCTION<unsigned __int32>(__VA_ARGS__); break;\
 	case DType::UInt8: FUNCTION<uint8>(__VA_ARGS__); break;      \
@@ -84,7 +86,8 @@ xt::xarray<T> Ref2Array(TensorRef* x)
 	switch (ELEMENTTYPE)\
 	{\
     case DType::Float32: {auto r_t = xt::adapt((float *) r->buffer, r->ElementCount(), xt::no_ownership(), r->getShape());r_t = xt::cast<float>(x_t); break;}\
-	case DType::Float64: {auto r_t = xt::adapt((double *) r->buffer, r->ElementCount(), xt::no_ownership(), r->getShape());r_t = xt::cast<double>(x_t); break;}\
+	case DType::Float64: {auto r_t = xt::adapt((double *) r->buffer, r->ElementCount(), xt::no_ownership(), r->getShape());r_t = xt::cast<double>(x_t); break;} \
+    case DType::Float128: {auto r_t = xt::adapt((long double *) r->buffer, r->ElementCount(), xt::no_ownership(), r->getShape());r_t = xt::cast<double>(x_t); break;}\
 	case DType::Int32: {auto r_t = xt::adapt((int *) r->buffer, r->ElementCount(), xt::no_ownership(), r->getShape());r_t = xt::cast<int>(x_t); break;}         \
     case DType::UInt32: {auto r_t = xt::adapt((unsigned int *) r->buffer, r->ElementCount(), xt::no_ownership(), r->getShape());r_t = xt::cast<int>(x_t); break;}\
 	case DType::UInt8: {auto r_t = xt::adapt((uint8 *) r->buffer, r->ElementCount(), xt::no_ownership(), r->getShape());r_t = xt::cast<uint8>(x_t); break;}\

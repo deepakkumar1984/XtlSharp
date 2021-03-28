@@ -105,7 +105,7 @@ namespace lapack
 
         if (info != 0)
         {
-            throw std::runtime_error("Could not find workspace size for orgqr.");
+            XTENSOR_THROW(std::runtime_error, "Could not find workspace size for orgqr.");
         }
 
         work.resize(static_cast<std::size_t>(work[0]));
@@ -152,7 +152,7 @@ namespace lapack
 
         if (info != 0)
         {
-            throw std::runtime_error("Could not find workspace size for ungqr.");
+            XTENSOR_THROW(std::runtime_error, "Could not find workspace size for ungqr.");
         }
 
         work.resize(static_cast<std::size_t>(std::real(work[0])));
@@ -195,7 +195,7 @@ namespace lapack
 
         if (info != 0)
         {
-            throw std::runtime_error("Could not find workspace size for geqrf.");
+            XTENSOR_THROW(std::runtime_error, "Could not find workspace size for geqrf.");
         }
 
         work.resize(static_cast<std::size_t>(std::real(work[0])));
@@ -299,7 +299,7 @@ namespace lapack
 
         if (info != 0)
         {
-            throw std::runtime_error("Could not find workspace size for real gesdd.");
+            XTENSOR_THROW(std::runtime_error, "Could not find workspace size for real gesdd.");
         }
 
         work.resize(static_cast<std::size_t>(work[0]));
@@ -386,7 +386,7 @@ namespace lapack
 
         if (info != 0)
         {
-            throw std::runtime_error("Could not find workspace size for complex gesdd.");
+            XTENSOR_THROW(std::runtime_error, "Could not find workspace size for complex gesdd.");
         }
         work.resize(static_cast<std::size_t>(std::real(work[0])));
 
@@ -427,6 +427,54 @@ namespace lapack
         return info;
     }
 
+    template <class E1, class E2>
+    int potrs(E1& A, E2& b, char uplo = 'L')
+    {
+      XTENSOR_ASSERT(A.dimension() == 2);
+      XTENSOR_ASSERT(A.layout() == layout_type::column_major);
+
+      XTENSOR_ASSERT(b.dimension() == 1);
+
+      XTENSOR_ASSERT(A.shape()[0] == A.shape()[1]);
+
+      int info = cxxlapack::potrs<blas_index_t>(
+          uplo,
+          static_cast<blas_index_t>(A.shape()[0]),
+          1,
+          A.data(),
+          static_cast<blas_index_t>(A.shape()[0]),
+          b.data(),
+          static_cast<blas_index_t>(b.shape()[0])
+      );
+
+      return info;
+    }
+
+    template <class E1, class E2>
+    int trtrs(E1& A, E2& b, char uplo = 'L', char trans = 'N', char diag = 'N')
+    {
+      XTENSOR_ASSERT(A.dimension() == 2);
+      XTENSOR_ASSERT(A.layout() == layout_type::column_major);
+
+      XTENSOR_ASSERT(b.dimension() == 1);
+
+      XTENSOR_ASSERT(A.shape()[0] == A.shape()[1]);
+
+      int info = cxxlapack::trtrs<blas_index_t>(
+          uplo,
+          trans,
+          diag,
+          static_cast<blas_index_t>(A.shape()[0]),
+          1,
+          A.data(),
+          static_cast<blas_index_t>(A.shape()[0]),
+          b.data(),
+          static_cast<blas_index_t>(b.shape()[0])
+      );
+
+      return info;
+    }
+
     /**
      * Interface to LAPACK getri.
      *
@@ -455,7 +503,7 @@ namespace lapack
 
         if (info > 0)
         {
-            throw std::runtime_error("Could not find workspace size for getri.");
+            XTENSOR_THROW(std::runtime_error, "Could not find workspace size for getri.");
         }
 
         work.resize(static_cast<std::size_t>(std::real(work[0])));
@@ -505,7 +553,7 @@ namespace lapack
 
         if (info != 0)
         {
-            throw std::runtime_error("Could not find workspace size for geev.");
+            XTENSOR_THROW(std::runtime_error, "Could not find workspace size for geev.");
         }
 
         work.resize(static_cast<std::size_t>(work[0]));
@@ -560,7 +608,7 @@ namespace lapack
 
         if (info != 0)
         {
-            throw std::runtime_error("Could not find workspace size for syevd.");
+            XTENSOR_THROW(std::runtime_error, "Could not find workspace size for syevd.");
         }
 
         work.resize(std::size_t(work[0]));
@@ -620,7 +668,7 @@ namespace lapack
 
         if (info != 0)
         {
-            throw std::runtime_error("Could not find workspace size for sygvd.");
+            XTENSOR_THROW(std::runtime_error, "Could not find workspace size for sygvd.");
         }
 
         work.resize(std::size_t(work[0]));
@@ -681,7 +729,7 @@ namespace lapack
 
         if (info != 0)
         {
-            throw std::runtime_error("Could not find workspace size for geev.");
+            XTENSOR_THROW(std::runtime_error, "Could not find workspace size for geev.");
         }
 
         work.resize(std::size_t(std::real(work[0])));
@@ -736,7 +784,7 @@ namespace lapack
 
         if (info != 0)
         {
-            throw std::runtime_error("Could not find workspace size for heevd.");
+            XTENSOR_THROW(std::runtime_error, "Could not find workspace size for heevd.");
         }
 
         work.resize(std::size_t(std::real(work[0])));
@@ -795,7 +843,7 @@ namespace lapack
 
         if (info != 0)
         {
-            throw std::runtime_error("Could not find workspace size for gelsd.");
+            XTENSOR_THROW(std::runtime_error, "Could not find workspace size for gelsd.");
         }
 
         work.resize(std::size_t(work[0]));
@@ -852,7 +900,7 @@ namespace lapack
 
         if (info != 0)
         {
-            throw std::runtime_error("Could not find workspace size for gelsd.");
+            XTENSOR_THROW(std::runtime_error, "Could not find workspace size for gelsd.");
         }
 
         work.resize(std::size_t(std::real(work[0])));

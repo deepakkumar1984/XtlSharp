@@ -53,17 +53,31 @@ xt::xarray<T> Ref2Array(TensorRef* x)
     return xt::adapt((T*)x->buffer, x->ElementCount(), xt::no_ownership(), x->getShape());
 }
 
+#define SWITCH_TENSOR_TYPE_NUM_CPU(ELEMENTTYPE, FUNCTION, ...)\
+	switch (ELEMENTTYPE)\
+	{\
+    case DType::Int16: FUNCTION<short>(__VA_ARGS__); break; \
+    case DType::Int32: FUNCTION<int>(__VA_ARGS__); break; \
+    case DType::Int64: FUNCTION<long>(__VA_ARGS__); break;\
+	case DType::UInt16: FUNCTION<unsigned short>(__VA_ARGS__); break; \
+	case DType::UInt32: FUNCTION<unsigned int>(__VA_ARGS__); break;       \
+	case DType::UInt64: FUNCTION<unsigned long>(__VA_ARGS__); break;\
+	default: throw TSError("Tensor type not supported");break;\
+	}
 
 #define SWITCH_TENSOR_TYPE_ALL_CPU(ELEMENTTYPE, FUNCTION, ...)\
 	switch (ELEMENTTYPE)\
 	{\
 	case DType::Float32: FUNCTION<float>(__VA_ARGS__); break;\
 	case DType::Float64: FUNCTION<double>(__VA_ARGS__); break;\
-	case DType::Int32: FUNCTION<__int32>(__VA_ARGS__); break;\
-	case DType::UInt8: FUNCTION<uint8>(__VA_ARGS__); break;\
-	default:\
-		throw TSError("Tensor type not supported");\
-		break;\
+	case DType::Int32: FUNCTION<__int32>(__VA_ARGS__); break;    \
+    case DType::UInt32: FUNCTION<unsigned __int32>(__VA_ARGS__); break;\
+	case DType::UInt8: FUNCTION<uint8>(__VA_ARGS__); break;      \
+	case DType::Int16: FUNCTION<short>(__VA_ARGS__); break;      \
+	case DType::UInt16: FUNCTION<unsigned short>(__VA_ARGS__); break; \
+	case DType::Int64: FUNCTION<long>(__VA_ARGS__); break;       \
+	case DType::UInt64: FUNCTION<unsigned long>(__VA_ARGS__); break;\
+	default: throw TSError("Tensor type not supported");break;\
 	}
 
 #define SWITCH_CAST_TYPE(ELEMENTTYPE)\
@@ -71,7 +85,8 @@ xt::xarray<T> Ref2Array(TensorRef* x)
 	{\
     case DType::Float32: {auto r_t = xt::adapt((float *) r->buffer, r->ElementCount(), xt::no_ownership(), r->getShape());r_t = xt::cast<float>(x_t); break;}\
 	case DType::Float64: {auto r_t = xt::adapt((double *) r->buffer, r->ElementCount(), xt::no_ownership(), r->getShape());r_t = xt::cast<double>(x_t); break;}\
-	case DType::Int32: {auto r_t = xt::adapt((int *) r->buffer, r->ElementCount(), xt::no_ownership(), r->getShape());r_t = xt::cast<int>(x_t); break;}\
+	case DType::Int32: {auto r_t = xt::adapt((int *) r->buffer, r->ElementCount(), xt::no_ownership(), r->getShape());r_t = xt::cast<int>(x_t); break;}         \
+    case DType::UInt32: {auto r_t = xt::adapt((unsigned int *) r->buffer, r->ElementCount(), xt::no_ownership(), r->getShape());r_t = xt::cast<int>(x_t); break;}\
 	case DType::UInt8: {auto r_t = xt::adapt((uint8 *) r->buffer, r->ElementCount(), xt::no_ownership(), r->getShape());r_t = xt::cast<uint8>(x_t); break;}\
 	case DType::Int16: {auto r_t = xt::adapt((short *) r->buffer, r->ElementCount(), xt::no_ownership(), r->getShape());r_t = xt::cast<short>(x_t); break;}\
 	case DType::UInt16: {auto r_t = xt::adapt((unsigned short *) r->buffer, r->ElementCount(), xt::no_ownership(), r->getShape());r_t = xt::cast<unsigned short>(x_t); break;}\

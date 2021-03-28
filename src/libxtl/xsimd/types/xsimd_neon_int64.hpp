@@ -12,6 +12,7 @@
 #define XSIMD_NEON_INT64_HPP
 
 #include "xsimd_base.hpp"
+#include "xsimd_neon_int_base.hpp"
 
 namespace xsimd
 {
@@ -136,6 +137,7 @@ namespace xsimd
         return *this;
     }
 
+    XSIMD_DEFINE_LOAD_STORE(int64_t, 2, bool, XSIMD_DEFAULT_ALIGNMENT)
     XSIMD_DEFINE_LOAD_STORE(int64_t, 2, int8_t, XSIMD_DEFAULT_ALIGNMENT)
     XSIMD_DEFINE_LOAD_STORE(int64_t, 2, uint8_t, XSIMD_DEFAULT_ALIGNMENT)
     XSIMD_DEFINE_LOAD_STORE(int64_t, 2, int16_t, XSIMD_DEFAULT_ALIGNMENT)
@@ -302,6 +304,7 @@ namespace xsimd
     {
         template <>
         struct batch_kernel<int64_t, 2>
+            : neon_int_kernel_base<batch<int64_t, 2>>
         {
             using batch_type = batch<int64_t, 2>;
             using value_type = int64_t;
@@ -421,26 +424,6 @@ namespace xsimd
 #else
                 return batch<int64_t, 2>(std::abs(rhs[0]), std::abs(rhs[1]));
 #endif
-            }
-
-            static batch_type fma(const batch_type& x, const batch_type& y, const batch_type& z)
-            {
-                return x * y + z;
-            }
-
-            static batch_type fms(const batch_type& x, const batch_type& y, const batch_type& z)
-            {
-                return x * y - z;
-            }
-
-            static batch_type fnma(const batch_type& x, const batch_type& y, const batch_type& z)
-            {
-                return -x * y + z;
-            }
-
-            static batch_type fnms(const batch_type& x, const batch_type& y, const batch_type& z)
-            {
-                return -x * y - z;
             }
 
             static value_type hadd(const batch_type& rhs)

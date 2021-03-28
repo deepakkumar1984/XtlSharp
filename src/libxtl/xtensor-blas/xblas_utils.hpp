@@ -19,11 +19,11 @@
 #include "xtensor/xutils.hpp"
 
 #ifndef DEFAULT_LEADING_STRIDE_BEHAVIOR
-#define DEFAULT_LEADING_STRIDE_BEHAVIOR throw std::runtime_error("No valid layout chosen.");
+#define DEFAULT_LEADING_STRIDE_BEHAVIOR XTENSOR_THROW(std::runtime_error, "No valid layout chosen.");
 #endif
 
 #ifndef DEFAULT_STORAGE_ORDER_BEHAVIOR
-#define DEFAULT_STORAGE_ORDER_BEHAVIOR throw std::runtime_error("Cannot handle layout_type of e.");
+#define DEFAULT_STORAGE_ORDER_BEHAVIOR XTENSOR_THROW(std::runtime_error, "Cannot handle layout_type of e.");
 #endif
 
 namespace xt
@@ -35,21 +35,13 @@ namespace xt
         return std::forward<T>(t);
     }
 
-    namespace detail
-    {
-        constexpr layout_type layout_remove_any(const layout_type layout)
-        {
-            return layout == layout_type::any ? XTENSOR_DEFAULT_LAYOUT : layout;
-        }
-    }
-
     template <layout_type L = layout_type::row_major, class T, class I = std::decay_t<T>>
     inline auto view_eval(T&& t)
         -> std::enable_if_t<(!has_data_interface<std::decay_t<T>>::value || I::static_layout != L)
                             && detail::is_array<typename I::shape_type>::value,
                             xtensor<typename I::value_type,
                                     std::tuple_size<typename I::shape_type>::value,
-                                    detail::layout_remove_any(L)>>
+                                    layout_remove_any(L)>>
     {
         return t;
     }
@@ -58,7 +50,7 @@ namespace xt
     inline auto view_eval(T&& t)
         -> std::enable_if_t<(!has_data_interface<std::decay_t<T>>::value || I::static_layout != L) &&
                             !detail::is_array<typename I::shape_type>::value,
-                            xarray<typename I::value_type, detail::layout_remove_any(L)>>
+                            xarray<typename I::value_type, layout_remove_any(L)>>
     {
         return t;
     }
@@ -203,7 +195,7 @@ namespace xt
         auto& dt = t.derived_cast();
         if (dt.shape()[dt.dimension() - 1] != dt.shape()[dt.dimension() - 2])
         {
-            throw std::runtime_error("Last 2 dimensions of the array must be square.");
+            XTENSOR_THROW(std::runtime_error, "Last 2 dimensions of the array must be square.");
         }
     }
 }

@@ -293,6 +293,8 @@ namespace xsimd
         return *this;
     }
 
+    XSIMD_DEFINE_LOAD_STORE(double, 2, bool, 16)
+
     inline batch<double, 2>& batch<double, 2>::load_unaligned(const int8_t* src)
     {
         return load_aligned(src);
@@ -624,6 +626,18 @@ namespace xsimd
                 return _mm_blendv_pd(b, a, cond);
 #else
                 return _mm_or_pd(_mm_and_pd(cond, a), _mm_andnot_pd(cond, b));
+#endif
+            }
+
+            template<bool... Values>
+            static batch_type select(const batch_bool_constant<value_type, Values...>& cond, const batch_type& a, const batch_type& b)
+            {
+#if XSIMD_X86_INSTR_SET >= XSIMD_X86_SSE4_1_VERSION
+                (void)cond;
+                constexpr int mask = batch_bool_constant<value_type, Values...>::mask();
+                return _mm_blend_pd(b, a, mask);
+#else
+                return select(cond(), a, b);
 #endif
             }
 

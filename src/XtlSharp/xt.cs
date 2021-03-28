@@ -7,6 +7,8 @@ namespace XtlSharp
 {
     public partial class xt
     {
+        public static Random random = new Random();
+
         public static XArray Add(XArray lhs, XArray rhs)
         {
             return NativeHelper.ElementwiseOps(lhs, rhs, ElementwiseFunc.Add);

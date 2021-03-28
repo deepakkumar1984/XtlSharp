@@ -78,7 +78,8 @@ enum ElementwiseFunc
     IsInf,
     IsNan,
     NonZero,
-    FlatNonZero
+    FlatNonZero,
+    Pow
 };
 
 OPS_API int TS_Elementwise_2(TensorRef* a, TensorRef* b, TensorRef* r, int op);

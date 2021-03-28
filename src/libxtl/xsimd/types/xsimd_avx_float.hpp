@@ -300,6 +300,8 @@ namespace xsimd
         return this->m_value;
     }
 
+    XSIMD_DEFINE_LOAD_STORE(float, 8, bool, 32)
+
     inline batch<float, 8>& batch<float, 8>::load_aligned(const int8_t* src)
     {
         __m128i tmp = _mm_loadl_epi64((const __m128i*)src);
@@ -702,6 +704,13 @@ namespace xsimd
             static batch_type select(const batch_bool_type& cond, const batch_type& a, const batch_type& b)
             {
                 return _mm256_blendv_ps(b, a, cond);
+            }
+
+            template<bool... Values>
+            static batch_type select(const batch_bool_constant<value_type, Values...>&, const batch_type& a, const batch_type& b)
+            {
+                constexpr int mask = batch_bool_constant<value_type, Values...>::mask();
+                return _mm256_blend_ps(b, a, mask);
             }
 
             static batch_bool_type isnan(const batch_type& x)

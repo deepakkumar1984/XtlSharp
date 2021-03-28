@@ -132,5 +132,134 @@ namespace XtlSharp.Native
             NativeWrapper.TS_Random_Rand(r.GetRef(), low, high);
             return r;
         }
+
+        public static XArray RandomRandInt(Shape shape, double low, double high, DType dtype = DType.Float32)
+        {
+            XArray r = new XArray(shape, dtype);
+            NativeWrapper.TS_Random_RandInt(r.GetRef(), low, high);
+            return r;
+        }
+
+        public static XArray RandomRandn(Shape shape, double mean, double std_dev, DType dtype = DType.Float32)
+        {
+            XArray r = new XArray(shape, dtype);
+            NativeWrapper.TS_Random_Randn(r.GetRef(), mean, std_dev);
+            return r;
+        }
+
+        public static XArray RandomBinomial(Shape shape, int trials, double prob, DType dtype = DType.Float32)
+        {
+            XArray r = new XArray(shape, dtype);
+            NativeWrapper.TS_Random_Binomial(r.GetRef(), trials, prob);
+            return r;
+        }
+
+        public static XArray RandomGeometric(Shape shape, double prob, DType dtype = DType.Int32)
+        {
+            if (dtype == DType.Float32 && dtype == DType.Float64)
+                throw new ArgumentException("Does not support float32 and float64");
+
+            XArray r = new XArray(shape, dtype);
+            NativeWrapper.TS_Random_Geometric(r.GetRef(), prob);
+            return r;
+        }
+
+        public static XArray RandomNegativeBinomial(Shape shape, int k, double prob, DType dtype = DType.Float32)
+        {
+            XArray r = new XArray(shape, dtype);
+            NativeWrapper.TS_Random_NegativeBinomial(r.GetRef(), k, prob);
+            return r;
+        }
+
+        public static XArray RandomPoisson(Shape shape, double rate, DType dtype = DType.Float32)
+        {
+            XArray r = new XArray(shape, dtype);
+            NativeWrapper.TS_Random_Poisson(r.GetRef(), rate);
+            return r;
+        }
+
+        public static XArray RandomExponential(Shape shape, double rate, DType dtype = DType.Float32)
+        {
+            XArray r = new XArray(shape, dtype);
+            NativeWrapper.TS_Random_Exponential(r.GetRef(), rate);
+            return r;
+        }
+
+        public static XArray RandomGamma(Shape shape, double alpha, double beta, DType dtype = DType.Float32)
+        {
+            XArray r = new XArray(shape, dtype);
+            NativeWrapper.TS_Random_Gamma(r.GetRef(), alpha, beta);
+            return r;
+        }
+
+        public static XArray RandomWeibull(Shape shape, double a, double b, DType dtype = DType.Float32)
+        {
+            XArray r = new XArray(shape, dtype);
+            NativeWrapper.TS_Random_Weibull(r.GetRef(), a, b);
+            return r;
+        }
+
+        public static XArray RandomExtremeValue(Shape shape, double a, double b, DType dtype = DType.Float32)
+        {
+            XArray r = new XArray(shape, dtype);
+            NativeWrapper.TS_Random_ExtremeValue(r.GetRef(), a, b);
+            return r;
+        }
+
+        public static XArray RandomLogNormal(Shape shape, double mean, double std_dev, DType dtype = DType.Float32)
+        {
+            XArray r = new XArray(shape, dtype);
+            NativeWrapper.TS_Random_LogNormal(r.GetRef(), mean, std_dev);
+            return r;
+        }
+
+        public static XArray RandomCauchy(Shape shape, double a, double b, DType dtype = DType.Float32)
+        {
+            XArray r = new XArray(shape, dtype);
+            NativeWrapper.TS_Random_Cauchy(r.GetRef(), a, b);
+            return r;
+        }
+
+        public static XArray RandomFisherF(Shape shape, double m, double n, DType dtype = DType.Float32)
+        {
+            XArray r = new XArray(shape, dtype);
+            NativeWrapper.TS_Random_FisherF(r.GetRef(), m, n);
+            return r;
+        }
+
+        public static XArray RandomStudentT(Shape shape, double n, DType dtype = DType.Float32)
+        {
+            XArray r = new XArray(shape, dtype);
+            NativeWrapper.TS_Random_StudentT(r.GetRef(), n);
+            return r;
+        }
+
+        public static XArray RandomChoice(Shape shape, int n, bool replace = true, DType dtype = DType.Float32)
+        {
+            XArray r = new XArray(shape, dtype);
+            NativeWrapper.TS_Random_Choice(r.GetRef(), n, replace);
+            return r;
+        }
+
+        public static XArray RandomChoice(Shape shape, int n, XArray weight, bool replace = true, DType dtype = DType.Float32)
+        {
+            XArray r = new XArray(shape, dtype);
+            NativeWrapper.TS_Random_ChoiceWithWeight(r.GetRef(), n, weight.GetRef(), replace);
+            return r;
+        }
+
+        public static XArray RandomShuffle(Shape shape, DType dtype = DType.Float32)
+        {
+            XArray r = new XArray(shape, dtype);
+            NativeWrapper.TS_Random_Shuffle(r.GetRef());
+            return r;
+        }
+
+        public static XArray RandomPermutation(Shape shape, DType dtype = DType.Float32)
+        {
+            XArray r = new XArray(shape, dtype);
+            NativeWrapper.TS_Random_Permutation(r.GetRef());
+            return r;
+        }
     }
 }

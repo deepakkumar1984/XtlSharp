@@ -17,11 +17,3 @@ int TS_Fill(TensorRef* result, double value)
     API_END()
 }
 
-template<typename T>
-void Add_Apply(TensorRef* a, TensorRef* b, TensorRef* r)
-{
-    auto a_t = Ref2Array<T>(a);
-    auto b_t = Ref2Array<T>(b);
-    auto r_t = Ref2Array<T>(r);
-    r_t = a_t + b_t;
-}

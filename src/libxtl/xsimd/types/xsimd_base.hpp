@@ -12,6 +12,7 @@
 #define XSIMD_BASE_HPP
 
 #include <cstddef>
+#include <cstring>
 #include <complex>
 #include <iterator>
 #include <ostream>
@@ -24,6 +25,7 @@
 #include "../memory/xsimd_alignment.hpp"
 #include "xsimd_utils.hpp"
 #include "xsimd_base_bool.hpp"
+#include "xsimd_base_constant.hpp"
 
 namespace xsimd
 {
@@ -152,6 +154,14 @@ namespace xsimd
         using reverse_iterator = std::reverse_iterator<iterator>;
         using const_reverse_iterator = std::reverse_iterator<const_iterator>;
 
+        static X broadcast(value_type v);
+
+        template <class T>
+        static X from_unaligned(T* src);
+
+        template <class T>
+        static X from_aligned(T* src);
+
         X& operator+=(const X& rhs);
         X& operator+=(const value_type& rhs);
 
@@ -211,7 +221,7 @@ namespace xsimd
         simd_batch(simd_batch&&) = default;
         simd_batch& operator=(simd_batch&&) = default;
 
-        simd_batch(storage_type value);
+        constexpr simd_batch(storage_type value);
 
         using char_itype =
             typename std::conditional<std::is_signed<char>::value, int8_t, uint8_t>::type;
@@ -491,6 +501,7 @@ namespace xsimd
 #endif // XSIMD_32_BIT_ABI
 
 #define XSIMD_DECLARE_LOAD_STORE_INT8(TYPE, N)                                 \
+    XSIMD_DECLARE_LOAD_STORE(TYPE, N, bool)                                    \
     XSIMD_DECLARE_LOAD_STORE(TYPE, N, int16_t)                                 \
     XSIMD_DECLARE_LOAD_STORE(TYPE, N, uint16_t)                                \
     XSIMD_DECLARE_LOAD_STORE(TYPE, N, int32_t)                                 \
@@ -501,6 +512,7 @@ namespace xsimd
     XSIMD_DECLARE_LOAD_STORE(TYPE, N, double)
 
 #define XSIMD_DEFINE_LOAD_STORE_INT8(TYPE, N, ALIGNMENT)                       \
+    XSIMD_DEFINE_LOAD_STORE(TYPE, N, bool, ALIGNMENT)                          \
     XSIMD_DEFINE_LOAD_STORE(TYPE, N, int16_t, ALIGNMENT)                       \
     XSIMD_DEFINE_LOAD_STORE(TYPE, N, uint16_t, ALIGNMENT)                      \
     XSIMD_DEFINE_LOAD_STORE(TYPE, N, int32_t, ALIGNMENT)                       \
@@ -511,6 +523,7 @@ namespace xsimd
     XSIMD_DEFINE_LOAD_STORE(TYPE, N, double, ALIGNMENT)
 
 #define XSIMD_DECLARE_LOAD_STORE_INT16(TYPE, N)                                \
+    XSIMD_DECLARE_LOAD_STORE(TYPE, N, bool)                                    \
     XSIMD_DECLARE_LOAD_STORE(TYPE, N, int8_t)                                  \
     XSIMD_DECLARE_LOAD_STORE(TYPE, N, uint8_t)                                 \
     XSIMD_DECLARE_LOAD_STORE(TYPE, N, int32_t)                                 \
@@ -521,6 +534,7 @@ namespace xsimd
     XSIMD_DECLARE_LOAD_STORE(TYPE, N, double)
 
 #define XSIMD_DEFINE_LOAD_STORE_INT16(TYPE, N, ALIGNMENT)                      \
+    XSIMD_DEFINE_LOAD_STORE(TYPE, N, bool, ALIGNMENT)                          \
     XSIMD_DEFINE_LOAD_STORE(TYPE, N, int8_t, ALIGNMENT)                        \
     XSIMD_DEFINE_LOAD_STORE(TYPE, N, uint8_t, ALIGNMENT)                       \
     XSIMD_DEFINE_LOAD_STORE(TYPE, N, int32_t, ALIGNMENT)                       \
@@ -531,6 +545,7 @@ namespace xsimd
     XSIMD_DEFINE_LOAD_STORE(TYPE, N, double, ALIGNMENT)
 
 #define XSIMD_DECLARE_LOAD_STORE_INT32(TYPE, N)                                \
+    XSIMD_DECLARE_LOAD_STORE(TYPE, N, bool)                                    \
     XSIMD_DECLARE_LOAD_STORE(TYPE, N, int8_t)                                  \
     XSIMD_DECLARE_LOAD_STORE(TYPE, N, uint8_t)                                 \
     XSIMD_DECLARE_LOAD_STORE(TYPE, N, int16_t)                                 \
@@ -541,6 +556,7 @@ namespace xsimd
     XSIMD_DECLARE_LOAD_STORE(TYPE, N, double)
 
 #define XSIMD_DEFINE_LOAD_STORE_INT32(TYPE, N, ALIGNMENT)                      \
+    XSIMD_DEFINE_LOAD_STORE(TYPE, N, bool, ALIGNMENT)                          \
     XSIMD_DEFINE_LOAD_STORE(TYPE, N, int8_t, ALIGNMENT)                        \
     XSIMD_DEFINE_LOAD_STORE(TYPE, N, uint8_t, ALIGNMENT)                       \
     XSIMD_DEFINE_LOAD_STORE(TYPE, N, int16_t, ALIGNMENT)                       \
@@ -551,6 +567,7 @@ namespace xsimd
     XSIMD_DEFINE_LOAD_STORE(TYPE, N, double, ALIGNMENT)
 
 #define XSIMD_DECLARE_LOAD_STORE_INT64(TYPE, N)                                \
+    XSIMD_DECLARE_LOAD_STORE(TYPE, N, bool)                                    \
     XSIMD_DECLARE_LOAD_STORE(TYPE, N, int8_t)                                  \
     XSIMD_DECLARE_LOAD_STORE(TYPE, N, uint8_t)                                 \
     XSIMD_DECLARE_LOAD_STORE(TYPE, N, int16_t)                                 \
@@ -561,6 +578,7 @@ namespace xsimd
     XSIMD_DECLARE_LOAD_STORE(TYPE, N, double)
 
 #define XSIMD_DEFINE_LOAD_STORE_INT64(TYPE, N, ALIGNMENT)                      \
+    XSIMD_DEFINE_LOAD_STORE(TYPE, N, bool, ALIGNMENT)                          \
     XSIMD_DEFINE_LOAD_STORE(TYPE, N, int8_t, ALIGNMENT)                        \
     XSIMD_DEFINE_LOAD_STORE(TYPE, N, uint8_t, ALIGNMENT)                       \
     XSIMD_DEFINE_LOAD_STORE(TYPE, N, int16_t, ALIGNMENT)                       \
@@ -571,6 +589,7 @@ namespace xsimd
     XSIMD_DEFINE_LOAD_STORE(TYPE, N, double, ALIGNMENT)
 
 #define XSIMD_DECLARE_LOAD_STORE_ALL(TYPE, N)                                  \
+    XSIMD_DECLARE_LOAD_STORE(TYPE, N, bool)                                    \
     XSIMD_DECLARE_LOAD_STORE(TYPE, N, int8_t)                                  \
     XSIMD_DECLARE_LOAD_STORE(TYPE, N, uint8_t)                                 \
     XSIMD_DECLARE_LOAD_STORE(TYPE, N, int16_t)                                 \
@@ -594,7 +613,8 @@ namespace xsimd
     {                                                                          \
         TYPE z0(0), z1(0);                                                     \
         using int_type = as_unsigned_integer_t<TYPE>;                          \
-        *reinterpret_cast<int_type*>(&z1) = ~int_type(0);                      \
+        int_type value(~int_type(0));                                          \
+        std::memcpy(&z1, &value, sizeof(int_type));                            \
         return select(src, batch<TYPE, N>(z1), batch<TYPE ,N>(z0));            \
     }
 
@@ -660,11 +680,57 @@ namespace xsimd
      *****************************/
 
     template <class X>
-    inline simd_batch<X>::simd_batch(storage_type value)
+    constexpr inline simd_batch<X>::simd_batch(storage_type value)
         : m_value(value)
     {
     }
 
+    /**
+     * @name Static builders
+     */
+    //@{
+    /**
+     * Creates a batch from the single value \c v.
+     * @param v the value used to initialize the batch
+     * @return a new batch instance
+     */
+    template <class X>
+    inline X simd_batch<X>::broadcast(value_type v)
+    {
+        return X(v);
+    }
+
+    /**
+     * Creates a batch from the buffer \c src. The
+     * memory does not need to be aligned.
+     * @param src the memory buffer to read
+     * @return a new batch instance
+     */
+    template <class X>
+    template <class T>
+    inline X simd_batch<X>::from_unaligned(T* src)
+    {
+        X res;
+        res.load_unaligned(src);
+        return res;
+    }
+
+    /**
+     * Creates a batch from the buffer \c src. The
+     * memory needs to be aligned.
+     * @param src the memory buffer to read
+     * @return a new batch instance
+     */
+    template <class X>
+    template <class T>
+    inline X simd_batch<X>::from_aligned(T* src)
+    {
+        X res;
+        res.load_aligned(src);
+        return res;
+    }
+    //@}
+    
     /**
      * @name Arithmetic computed assignment
      */
@@ -1687,6 +1753,28 @@ namespace xsimd
         using value_type = typename simd_batch_traits<X>::value_type;
         using kernel = detail::batch_kernel<value_type, simd_batch_traits<X>::size>;
         return kernel::select(cond(), a(), b());
+    }
+
+    /**
+     * @ingroup simd_batch_miscellaneous
+     *
+     * Ternary operator for batches: selects values from the batches \c a or \c b
+     * depending on the boolean values in the constant batch \c cond. Equivalent to
+     * \code{.cpp}
+     * for(std::size_t i = 0; i < N; ++i)
+     *     res[i] = cond[i] ? a[i] : b[i];
+     * \endcode
+     * @param cond constant batch condition.
+     * @param a batch values for truthy condition.
+     * @param b batch value for falsy condition.
+     * @return the result of the selection.
+     */
+    template <class X, bool... Masks>
+    inline batch_type_t<X> select(const batch_bool_constant<typename simd_batch_traits<X>::value_type, Masks...>& cond, const simd_base<X>& a, const simd_base<X>& b)
+    {
+        using value_type = typename simd_batch_traits<X>::value_type;
+        using kernel = detail::batch_kernel<value_type, simd_batch_traits<X>::size>;
+        return kernel::select(cond, a(), b());
     }
 
     /**

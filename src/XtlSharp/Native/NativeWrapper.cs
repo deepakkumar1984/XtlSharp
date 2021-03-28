@@ -64,6 +64,57 @@ namespace XtlSharp.Native
         public static extern int TS_Random_RandInt(IntPtr r, double lower, double upper);
 
         [DllImport(dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int TS_Random_Randn(IntPtr r, double mean, double std_dev);
+
+        [DllImport(dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int TS_Random_Binomial(IntPtr r, int trials, double prob);
+
+        [DllImport(dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int TS_Random_Geometric(IntPtr r, double prob);
+
+        [DllImport(dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int TS_Random_NegativeBinomial(IntPtr r, int k, double prob);
+
+        [DllImport(dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int TS_Random_Poisson(IntPtr r, double rate);
+
+        [DllImport(dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int TS_Random_Exponential(IntPtr r, double rate);
+
+        [DllImport(dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int TS_Random_Gamma(IntPtr r, double alpha, double beta);
+
+        [DllImport(dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int TS_Random_Weibull(IntPtr r, double a, double b);
+
+        [DllImport(dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int TS_Random_ExtremeValue(IntPtr r, double a, double b);
+
+        [DllImport(dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int TS_Random_LogNormal(IntPtr r, double mean, double std_dev);
+
+        [DllImport(dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int TS_Random_Cauchy(IntPtr r, double a, double b);
+
+        [DllImport(dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int TS_Random_FisherF(IntPtr r, double m, double n);
+
+        [DllImport(dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int TS_Random_StudentT(IntPtr r, double n);
+
+        [DllImport(dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int TS_Random_Choice(IntPtr r, int n, bool replace);
+
+        [DllImport(dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int TS_Random_ChoiceWithWeight(IntPtr r, int n, IntPtr w, bool replace);
+
+        [DllImport(dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int TS_Random_Shuffle(IntPtr r);
+
+        [DllImport(dll, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int TS_Random_Permutation(IntPtr r);
+
+        [DllImport(dll, CallingConvention = CallingConvention.Cdecl)]
         public static extern int TS_Initializer(IntPtr r, double lower, double upper);
     }
 }

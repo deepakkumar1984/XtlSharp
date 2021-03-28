@@ -76,7 +76,7 @@ namespace xt
         };
 #pragma pack(pop)
 
-        uint64_t extract_zip64_compressed_size_within(std::istream& stream,
+        inline uint64_t extract_zip64_compressed_size_within(std::istream& stream,
                                                       std::streamsize nbytes)
         {
             for (extensible_data_field desc; nbytes > sizeof(desc);)
@@ -115,7 +115,7 @@ namespace xt
                 "load_npz: missing zip64 extended information.");
         }
 
-        uint64_t extract_zip64_compressed_size(std::istream& stream,
+        inline uint64_t extract_zip64_compressed_size(std::istream& stream,
                                                zip_local_header const& entry)
         {
             if (entry.compressed_size == 0xffffffff)
@@ -154,7 +154,8 @@ namespace xt
         using result_type = std::map<std::string, detail::npy_file>;
         result_type arrays;
 
-        for (alignas(uint32_t) detail::zip_local_header entry;;)
+        alignas(uint32_t) detail::zip_local_header entry;
+        for (;;)
         {
             if (!stream.read(reinterpret_cast<char*>(&entry), sizeof(entry)))
             {

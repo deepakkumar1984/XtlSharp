@@ -1,5 +1,6 @@
 
 #include "random.h"
+#include <type_traits>
 
 #if !defined(ARRAY_SIZE)
     #define ARRAY_SIZE(x) (sizeof((x)) / sizeof((x)[0]))
@@ -30,7 +31,7 @@ template<typename T>
 INLINE_FUNC void GeometricApply(TensorRef* r, double prob)
 {
     auto r_t = xt::adapt((T*)r->buffer, r->ElementCount(), xt::no_ownership(), r->getShape());
-    r_t = xt::random::geometric(r->getShape(), prob);
+    r_t = xt::random::geometric<T>(r->getShape(), prob);
 }
 
 template<typename T>
@@ -44,7 +45,7 @@ template<typename T>
 INLINE_FUNC void PoissonApply(TensorRef* r, double rate)
 {
     auto r_t = xt::adapt((T*)r->buffer, r->ElementCount(), xt::no_ownership(), r->getShape());
-    r_t = xt::random::poisson(r->getShape(), rate);
+    r_t = xt::random::poisson<T>(r->getShape(), rate);
 }
 
 template<typename T>
@@ -168,7 +169,7 @@ OPS_API int TS_Random_Binomial(TensorRef* r, int trials, double prob)
 OPS_API int TS_Random_Geometric(TensorRef* r, double prob)
 {
     API_BEGIN()
-        SWITCH_TENSOR_TYPE_ALL_CPU(r->elementType, GeometricApply, r, prob)
+        SWITCH_TENSOR_TYPE_NUM_CPU(r->elementType, GeometricApply, r, prob)
     API_END()
 }
 
@@ -182,7 +183,7 @@ OPS_API int TS_Random_NegativeBinomial(TensorRef* r, int k, double prob)
 OPS_API int TS_Random_Poisson(TensorRef* r, double rate)
 {
     API_BEGIN()
-        SWITCH_TENSOR_TYPE_ALL_CPU(r->elementType, PoissonApply, r, rate)
+        SWITCH_TENSOR_TYPE_NUM_CPU(r->elementType, PoissonApply, r, rate)
     API_END()
 }
 
@@ -211,5 +212,12 @@ OPS_API int TS_Random_ExtremeValue(TensorRef* r, double a, double b)
 {
     API_BEGIN()
         SWITCH_TENSOR_TYPE_ALL_CPU(r->elementType, ExtremeValueApply, r, a, b)
+    API_END()
+}
+
+OPS_API int TS_Random_LogNormal(TensorRef* r, double mean, double std_dev)
+{
+    API_BEGIN()
+        SWITCH_TENSOR_TYPE_ALL_CPU(r->elementType, LogNormalApply, r, mean, std_dev)
     API_END()
 }

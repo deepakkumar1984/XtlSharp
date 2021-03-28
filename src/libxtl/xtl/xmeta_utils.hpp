@@ -11,6 +11,7 @@
 #define XTL_XMETA_UTILS_HPP
 
 #include <cstddef>
+#include <cstdint>
 #include <type_traits>
 
 #include "xfunctional.hpp"
@@ -225,11 +226,68 @@ namespace xtl
         };
 
         /************
+         * index_of *
+         ************/
+
+        namespace detail
+        {
+            template <class L, class V>
+            struct index_of_impl;
+
+            template <template <class...> class L, class V>
+            struct index_of_impl<L<>, V>
+            {
+                static constexpr size_t value = SIZE_MAX;
+            };
+
+            template <template <class...> class L, class... T, class V>
+            struct index_of_impl<L<V, T...>, V>
+            {
+                static constexpr size_t value = 0u;
+            };
+
+            template <template <class...> class L, class U, class... T, class V>
+            struct index_of_impl<L<U, T...>, V>
+            {
+                static constexpr size_t tmp = index_of_impl<L<T...>, V>::value;
+                static constexpr size_t value = tmp == SIZE_MAX ? SIZE_MAX : 1u + tmp;
+            };
+        }
+
+        template <class L, class T>
+        struct index_of : detail::index_of_impl<L, T>
+        {
+        };
+
+        /************
          * contains *
          ************/
 
+        namespace detail
+        {
+            template <class L, class V>
+            struct contains_impl;
+
+            template <template <class...> class L, class V>
+            struct contains_impl<L<>, V> : std::false_type
+            {
+            };
+
+            template <template <class...> class L, class... T, class V>
+            struct contains_impl<L<V, T...>, V> : std::true_type
+            {
+            };
+
+            template <template <class...> class L, class U, class... T, class V>
+            struct contains_impl<L<U, T...>, V> : contains_impl<L<T...>, V>
+            {
+            };
+        }
+
         template <class L, class V>
-        using contains = bool_<count<L, V>::value != 0>;
+        struct contains : detail::contains_impl<L, V>
+        {
+        };
 
         /*********
          * front *
@@ -544,6 +602,38 @@ namespace xtl
         {
             return static_if(std::integral_constant<bool, cond>(), tf, ff);
         }
+
+        /***********
+         * switch_ *
+         ***********/
+
+        using default_t = std::true_type;
+
+        namespace detail
+        {
+            template <class... T>
+            struct switch_impl;
+
+            template <class C, class T, class... U>
+            struct switch_impl<C, T, U...>
+                : std::conditional<C::value, T, typename switch_impl<U...>::type>
+            {
+            };
+
+            template <class C, class T, class U>
+            struct switch_impl<C, T, default_t, U>
+                : std::conditional<C::value, T, U>
+            {
+            };
+        }
+
+        template <class... T>
+        struct switch_ : detail::switch_impl<T...>
+        {
+        };
+
+        template <class... T>
+        using switch_t = typename switch_<T...>::type;
     }
 }
 

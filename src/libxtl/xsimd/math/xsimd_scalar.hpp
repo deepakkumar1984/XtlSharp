@@ -75,24 +75,45 @@ namespace xsimd
 #else
     // Windows defines catch all templates
     template <class T>
-    typename std::enable_if<std::is_scalar<T>::value, bool>::type
+    typename std::enable_if<std::is_floating_point<T>::value, bool>::type
     isfinite(T var)
     {
         return std::isfinite(var);
     }
 
     template <class T>
-    typename std::enable_if<std::is_scalar<T>::value, bool>::type
+    typename std::enable_if<std::is_integral<T>::value, bool>::type
+    isfinite(T var)
+    {
+        return isfinite(double(var));
+    }
+
+    template <class T>
+    typename std::enable_if<std::is_floating_point<T>::value, bool>::type
     isinf(T var)
     {
         return std::isinf(var);
     }
 
     template <class T>
-    typename std::enable_if<std::is_scalar<T>::value, bool>::type
+    typename std::enable_if<std::is_integral<T>::value, bool>::type
+    isinf(T var)
+    {
+        return isinf(double(var));
+    }
+
+    template <class T>
+    typename std::enable_if<std::is_floating_point<T>::value, bool>::type
     isnan(T var)
     {
         return std::isnan(var);
+    }
+
+    template <class T>
+    typename std::enable_if<std::is_integral<T>::value, bool>::type
+    isnan(T var)
+    {
+        return isnan(double(var));
     }
 #endif
 
@@ -353,6 +374,31 @@ namespace xsimd
     {
         return std::fma(a, b, c);
     }
+
+    namespace detail
+    {
+        template <class C>
+        inline C fma_complex_scalar_impl(const C& a, const C& b, const C& c)
+        {
+            return {fms(a.real(), b.real(), fms(a.imag(), b.imag(), c.real())),
+                    fma(a.real(), b.imag(), fma(a.imag(), b.real(), c.imag()))};
+        }
+    }
+
+    template <class T>
+    inline std::complex<T> fma(const std::complex<T>& a, const std::complex<T>& b, const std::complex<T>& c)
+    {
+        return detail::fma_complex_scalar_impl(a, b, c);
+    }
+
+
+#ifdef XSIMD_ENABLE_XTL_COMPLEX
+    template <class T, bool i3ec>
+    inline xtl::xcomplex<T, T, i3ec> fma(const xtl::xcomplex<T, T, i3ec>& a, const xtl::xcomplex<T, T, i3ec>& b, const xtl::xcomplex<T, T, i3ec>& c)
+    {
+        return detail::fma_complex_scalar_impl(a, b, c);
+    }
+#endif
 
     inline void sincos(float val, float&s, float& c)
     {

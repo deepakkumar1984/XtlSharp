@@ -278,6 +278,8 @@ namespace xsimd
         return this->m_value;
     }
 
+    XSIMD_DEFINE_LOAD_STORE(float, 4, bool, 16)
+
     inline batch<float, 4>& batch<float, 4>::load_aligned(const int8_t* src)
     {
         __m128i tmp = _mm_loadl_epi64((const __m128i*)src);
@@ -687,6 +689,18 @@ namespace xsimd
                 return _mm_blendv_ps(b, a, cond);
 #else
                 return _mm_or_ps(_mm_and_ps(cond, a), _mm_andnot_ps(cond, b));
+#endif
+            }
+
+            template<bool... Values>
+            static batch_type select(const batch_bool_constant<value_type, Values...>& cond, const batch_type& a, const batch_type& b)
+            {
+#if XSIMD_X86_INSTR_SET >= XSIMD_X86_SSE4_1_VERSION
+                (void)cond;
+                constexpr int mask = batch_bool_constant<value_type, Values...>::mask();
+                return _mm_blend_ps(b, a, mask);
+#else
+                return select((batch_bool_type)cond, a, b);
 #endif
             }
 

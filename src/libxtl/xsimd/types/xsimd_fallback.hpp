@@ -523,12 +523,12 @@ namespace xsimd
 
             static batch_type bitwise_not(const batch_type& rhs)
             {
-                XSIMD_FALLBACK_UNARY_OP(batch_bool, ~, rhs)
+                XSIMD_FALLBACK_UNARY_OP(batch_bool, !, rhs)
             }
 
             static batch_type bitwise_andnot(const batch_type& lhs, const batch_type& rhs)
             {
-                XSIMD_FALLBACK_MAPPING_LOOP(batch_bool, (~(lhs[i] & rhs[i])))
+                XSIMD_FALLBACK_MAPPING_LOOP(batch_bool, (!(lhs[i] & rhs[i])))
             }
 
             static batch_type equal(const batch_type& lhs, const batch_type& rhs)
@@ -603,7 +603,8 @@ namespace xsimd
             {
                 T res(0);
                 using int_type = as_unsigned_integer_t<T>;
-                *reinterpret_cast<int_type*>(&res) = ~int_type(0);
+                int_type value(~int_type(0));
+                std::memcpy(&res, &value, sizeof(int_type));
                 return res;
             }
         };
@@ -702,6 +703,7 @@ namespace xsimd
         this->store_unaligned_impl(dst);                             \
     }
 
+    FALLBACK_DEFINE_LOAD_STORE(bool)
     FALLBACK_DEFINE_LOAD_STORE(int8_t)
     FALLBACK_DEFINE_LOAD_STORE(uint8_t)
     FALLBACK_DEFINE_LOAD_STORE(int16_t)
@@ -912,6 +914,12 @@ namespace xsimd
             }
 
             static batch_type select(const batch_bool_type& cond, const batch_type& a, const batch_type& b)
+            {
+                XSIMD_FALLBACK_MAPPING_LOOP(batch, (cond[i] ? a[i] : b[i]))
+            }
+
+            template<bool... Values>
+            static batch_type select(const batch_bool_constant<value_type, Values...>& cond, const batch_type& a, const batch_type& b)
             {
                 XSIMD_FALLBACK_MAPPING_LOOP(batch, (cond[i] ? a[i] : b[i]))
             }
